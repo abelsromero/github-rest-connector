@@ -1,6 +1,9 @@
 = Rest API client for GitHub
 
-
+This project is a test for personal investigation about GitHub REST API usage
 
 == Aims
-Avoid depending on other libraries. Being as light as possible
+some of the design principals are:
+
+* Lightweight: avoiding the use of third libraries.
+* Simplicity: simple facade interface using as much as Groovy features as possible

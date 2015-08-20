@@ -7,8 +7,8 @@ import asr.test.rest.GitHubConnector
 
 GitHubConnector c = new GitHubConnector('asciidoctor', 'asciidoctorj')
 GitHubConnector c2 = new GitHubConnector('asciidoctor', 'asciidoctor')
-c.username = 'abelsromero'
-c.password = 's45rGTodos'
+c.username = ''
+c.password = ''
 
 c.getMilestones().each { m ->
 
