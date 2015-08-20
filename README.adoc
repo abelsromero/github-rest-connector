@@ -1,0 +1,6 @@
+= Rest API client for GitHub
+
+
+
+== Aims
+Avoid depending on other libraries. Being as light as possible
