@@ -23,14 +23,8 @@ class GitHubConnector {
     }
 
     def getMilestones () {
-
         URL url = new URL("$API_PATH/$repoOwner/$repoName/milestones")
-
-        URLConnection connection = doAuthentication(url.openConnection())
-        // try benchmarch which is better, pass text or reader
-        InputStreamReader reader = new InputStreamReader(connection.inputStream)
-        //String content = connection.inputStream.text
-        return new JsonSlurper().parse(reader)
+        return execGETRequest(url)
     }
 
     /**
@@ -45,9 +39,7 @@ class GitHubConnector {
         if (labels)
             url = "$url$labels=${labels.join(',')}"
 
-        URLConnection connection = doAuthentication(new URL(url).openConnection())
-        InputStreamReader reader = new InputStreamReader(connection.inputStream)
-        return new JsonSlurper().parse(reader)
+        return execGETRequest(url)
     }
 
     /**
@@ -56,9 +48,7 @@ class GitHubConnector {
      */
     def getLabels () {
         String url = "$API_PATH/$repoOwner/$repoName/labels"
-        URLConnection connection = doAuthentication(new URL(url).openConnection())
-        InputStreamReader reader = new InputStreamReader(connection.inputStream)
-        return new JsonSlurper().parse(reader)
+        return execGETRequest(url)
     }
 
     /**
@@ -70,5 +60,14 @@ class GitHubConnector {
             connection.setRequestProperty("Authorization", "Basic $encoded");
         }
         return connection
+    }
+
+    /**
+     * Executes a GET request an returns the result in a JsonSlurper
+     */
+    private JsonSlurper execGETRequest(String url){
+        URLConnection connection = doAuthentication(new URL(url).openConnection())
+        InputStreamReader reader = new InputStreamReader(connection.inputStream)
+        return new JsonSlurper().parse(reader)
     }
 }

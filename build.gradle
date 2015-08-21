@@ -8,8 +8,12 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    groovyVersion = '2.4.4'
+}
+
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.4'
+    compile "org.codehaus.groovy:groovy-json:$groovyVersion"
 
     testCompile 'junit:junit:4.11'
 }
